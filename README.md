@@ -34,6 +34,7 @@ By integrating Bureau of Labor Statistics (BLS) Consumer Price Index (CPI) data 
 ├── Final_Presentation_Analysis_1_.ipynb         # Regression & classification modeling (Ridge, Lasso, RF, XGBoost, SVM)
 ├── Final_Presentation_Analysis_2.ipynb          # Post-clustering deep-dive analysis & visualizations
 ├── post_clustering_analysis.ipynb               # Cluster persona development, geographic & spending pattern analysis
+├── Modified_final_inflation_data 2.csv               # Dataset
 └── README.md
 ```
 
