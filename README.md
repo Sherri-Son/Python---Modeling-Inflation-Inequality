@@ -10,18 +10,18 @@
 
 This project investigates how inflation during the COVID-19 era (2020–2024) disproportionately impacted lower-income U.S. households. While the national CPI peaked at 8% in 2022, households in the lowest income quintile experienced effective inflation rates of 10–11%—driven by surging costs in food, energy, and transportation—while wealthier households were partially insulated by spending more on services with modest price growth.
 
-By integrating Bureau of Labor Statistics (BLS) **Consumer Price Index (CPI)** data with the **Consumer Expenditure Survey (CEX)**, the study calculates household-level effective inflation rates across 58,456 U.S. households and applies regression, classification, and clustering techniques to quantify who bears the greatest inflation burden and why.
+By integrating Bureau of Labor Statistics (BLS) Consumer Price Index (CPI) data with the Consumer Expenditure Survey (CEX), the study calculates household-level effective inflation rates across 58,456 U.S. households and applies regression, classification, and clustering techniques to quantify who bears the greatest inflation burden and why.
 
 ---
 
 ## Key Findings
 
-- **1.46 percentage point gap** in effective inflation between the poorest (Q1) and wealthiest (Q5) income quintiles, expanding to 2–3 points during peak inflation in mid-2022.
-- **16% of households** ("High-Inflation Group") faced average rates of **9.72%**, nearly double the rate of the affluent majority.
-- **Consumption patterns matter more than demographics**: K-Means clustering revealed that high transportation and energy spending shares—not age or family type alone—drove the greatest inflation exposure.
-- **Homeownership does not uniformly protect against inflation**: Q1 homeowners actually faced *higher* inflation than Q1 renters, challenging the assumption that fixed-rate mortgages shield low-income households.
-- Regression models (Random Forest, XGBoost) achieved **R² > 0.70**, with food, energy, and housing expenditure shares as the strongest predictors.
-- Classification models categorized households into low/medium/high inflation burden groups at **>80% accuracy**.
+- 1.46 percentage point gap in effective inflation between the poorest (Q1) and wealthiest (Q5) income quintiles, expanding to 2–3 points during peak inflation in mid-2022.
+- 16% of households ("High-Inflation Group") faced average rates of 9.72%, nearly double the rate of the affluent majority.
+- Consumption patterns matter more than demographics: K-Means clustering revealed that high transportation and energy spending shares—not age or family type alone—drove the greatest inflation exposure.
+- Homeownership does not uniformly protect against inflation: Q1 homeowners actually faced *higher* inflation than Q1 renters, challenging the assumption that fixed-rate mortgages shield low-income households.
+- Regression models (Random Forest, XGBoost) achieved R² > 0.70, with food, energy, and housing expenditure shares as the strongest predictors.
+- Classification models categorized households into low/medium/high inflation burden groups at >80% accuracy.
 
 ---
 
@@ -29,9 +29,9 @@ By integrating Bureau of Labor Statistics (BLS) **Consumer Price Index (CPI)** d
 
 ```
 ├── Data_Preprocessing_Nov_25th_data_mining.ipynb   # Data loading, cleaning, EDA, and train/test/val split
-├── Final_Presentation_Analysis_1___4_.ipynb         # Regression & classification modeling (Ridge, Lasso, RF, XGBoost, SVM)
-├── Final_Presentation_Analysis_2__5_.ipynb          # Post-clustering deep-dive analysis & visualizations
-├── post_clustering_analysis__1_.ipynb               # Cluster persona development, geographic & spending pattern analysis
+├── Final_Presentation_Analysis_1_.ipynb         # Regression & classification modeling (Ridge, Lasso, RF, XGBoost, SVM)
+├── Final_Presentation_Analysis_2.ipynb          # Post-clustering deep-dive analysis & visualizations
+├── post_clustering_analysis.ipynb               # Cluster persona development, geographic & spending pattern analysis
 └── README.md
 ```
 
@@ -40,26 +40,23 @@ By integrating Bureau of Labor Statistics (BLS) **Consumer Price Index (CPI)** d
 | Notebook | Purpose |
 |----------|---------|
 | `Data_Preprocessing_Nov_25th_data_mining.ipynb` | Loads the merged CPI×CEX dataset, handles missing values (drops `Family_Type` at 38% missing; removes 876 rows with missing `Region`), computes summary statistics, performs EDA including inflation-by-quintile analysis, and splits data into 70/20/10 train/test/validation sets. |
-| `Final_Presentation_Analysis_1___4_.ipynb` | Implements regression models (Ridge, Lasso, Random Forest, XGBoost) to predict effective inflation rates, and classification models (Random Forest, XGBoost, SVM, ensemble voting) to categorize households into low/medium/high burden groups. Includes SHAP explainability analysis. |
-| `Final_Presentation_Analysis_2__5_.ipynb` | Post-clustering storytelling: names cluster personas, analyzes geographic distribution of vulnerable households, visualizes spending patterns, and creates policy-relevant summary graphics. |
-| `post_clustering_analysis__1_.ipynb` | K-Means clustering (k=4 via Silhouette score), PCA and t-SNE dimensionality reduction visualizations, and detailed cluster profiling. |
+| `Final_Presentation_Analysis_1.ipynb` | Implements regression models (Ridge, Lasso, Random Forest, XGBoost) to predict effective inflation rates, and classification models (Random Forest, XGBoost, SVM, ensemble voting) to categorize households into low/medium/high burden groups. Includes SHAP explainability analysis. |
+| `Final_Presentation_Analysis_2.ipynb` | Post-clustering storytelling: names cluster personas, analyzes geographic distribution of vulnerable households, visualizes spending patterns, and creates policy-relevant summary graphics. |
+| `post_clustering_analysis.ipynb` | K-Means clustering (k=4 via Silhouette score), PCA and t-SNE dimensionality reduction visualizations, and detailed cluster profiling. |
 
 ---
 
 ## Data
 
 **Sources (Bureau of Labor Statistics):**
-- **Consumer Price Index (CPI):** Monthly category-level price changes, 2020–2024.
-- **Consumer Expenditure Survey (CEX):** Household-level expenditure shares across income quintiles and demographic groups, 2020–2023.
+- Consumer Price Index (CPI): Monthly category-level price changes, 2020–2024.
+- Consumer Expenditure Survey (CEX): Household-level expenditure shares across income quintiles and demographic groups, 2020–2023.
 
 **Merged Dataset:** 58,456 households × 22 features including:
-- **Demographics:** income quintile, family size, number of earners/children, age of household head, education, employment status, marital status
-- **Geography:** region, urban/rural classification, MSA size
-- **Expenditure shares (8 categories):** food at home, food away from home, housing, energy, transportation, healthcare, education, apparel
-- **Target variable:** Effective Inflation Rate (household-specific, weighted by spending shares × CPI category changes)
-
-> **Note:** The raw input CSV (`Modified_final_inflation_data 2.csv`) is not included in this repository. The notebooks were originally run in Google Colab with data loaded from Google Drive.
-
+- Demographics: income quintile, family size, number of earners/children, age of household head, education, employment status, marital status
+- Geography: region, urban/rural classification, MSA size
+- Expenditure shares (8 categories): food at home, food away from home, housing, energy, transportation, healthcare, education, apparel
+- Target variable: Effective Inflation Rate (household-specific, weighted by spending shares × CPI category changes)
 ---
 
 ## Methodology
@@ -71,7 +68,7 @@ By integrating Bureau of Labor Statistics (BLS) **Consumer Price Index (CPI)** d
 - Urban/rural inflation gap analysis
 
 ### Regression
-- **Models:** Ridge Regression, Lasso Regression, Random Forest, XGBoost
+- Models:** Ridge Regression, Lasso Regression, Random Forest, XGBoost
 - **Target:** Effective Inflation Rate (continuous)
 - **Evaluation:** R², MAE, RMSE
 - **Interpretability:** SHAP values for feature importance
