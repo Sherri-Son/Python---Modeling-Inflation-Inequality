@@ -1,6 +1,6 @@
 # The Unequal Burden: Modeling Inflation Inequality with Machine Learning Techniques
 
-**Authors:** Sakib Mowla & Sherrie Son  
+**Authors:** Sakib Mowla & Sherri Son  
 **Affiliation:** Department of Computer and Information Science, Fordham University  
 **Contact:** {smowla & cs215}@fordham.edu
 
