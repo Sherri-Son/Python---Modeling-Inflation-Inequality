@@ -5,6 +5,7 @@
 **Contact:** {smowla & cs215}@fordham.edu
 
 ---
+For more information, please refer to this paper.
 [DM Final Paper.pdf](https://github.com/user-attachments/files/25451527/DM.Final.Paper.pdf)
 
 ## Overview
